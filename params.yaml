@@ -1,0 +1,10 @@
+# For reading about params of model : https://keras.io/api/applications/
+
+AUGMENTATION: True
+IMAGE_SIZE: [224,224,3] # as per VGG 16 model
+BATCH_SIZE: 16
+INCLUDE_TOP: False
+EPOCHS: 10
+artifacts/prepare_base_model/base_model_updated.h5: 4
+WEIGHTS: imagenet
+LEARNING_RATE: 0.01
