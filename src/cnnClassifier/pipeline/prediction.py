@@ -6,7 +6,7 @@ import os
 class PredictionPipeline:
     def __init__(self, filename):
         self.filename = filename
-        self.model = load_model(os.path.join("artifacts", "training", "model.h5"))
+        self.model = load_model(os.path.join("model", "model.h5"))
 
     def predict(self, image_path=None):
         # Use provided image path if given
