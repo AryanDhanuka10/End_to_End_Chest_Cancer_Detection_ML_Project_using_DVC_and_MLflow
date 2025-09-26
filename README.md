@@ -162,7 +162,7 @@ dvc pull
 📌 The model has been trained on chest X-ray images to classify:
 
 * Normal
-* Adenocarcinoma (Left Lower Lobe - Stage Ib)
+* Adenocarcinoma Cancer
 
 ---
 
