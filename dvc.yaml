@@ -1,4 +1,4 @@
-stages:
+# use commands such as dvc init, dvc repro and dvc dag
   data_ingestion:
     cmd: python src/cnnClassifier/pipeline/stage_01_data_ingestion.py
     deps:
