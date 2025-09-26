@@ -6,7 +6,10 @@ import os
 class PredictionPipeline:
     def __init__(self, filename):
         self.filename = filename
+        # Load your trained binary model
         self.model = load_model(os.path.join("model", "model.h5"))
+        # Define binary class labels
+        self.class_labels = ["Adenocarcinoma Cancer", "Normal"]
 
     def predict(self, image_path=None):
         # Use provided image path if given
@@ -20,17 +23,11 @@ class PredictionPipeline:
     
         # Predict
         predictions = self.model.predict(test_image)
-        print("Raw model output:", predictions)
+        print("Raw model output:", predictions, "Shape:", predictions.shape)
     
-        # Binary classification (Adenocarcinoma vs Normal)
-        if predictions.shape[1] > 1:  
-            # Multi-class style output → take max index
-            result = np.argmax(predictions, axis=1)[0]
-        else:  
-            # Single sigmoid output → threshold at 0.5
-            result = int(predictions[0][0] > 0.5)
+        # Binary classification (sigmoid output)
+        # If predictions come as [[0.7]] or [0.7], handle both
+        pred_value = predictions[0][0] if predictions.ndim == 2 else predictions[0]
+        result = 0 if pred_value > 0.5 else 1  # 0 → Adenocarcinoma, 1 → Normal
     
-        # Class Labels (2 classes only)
-        class_labels = ["Adenocarcinoma Cancer", "Normal"]
-    
-        return class_labels[result]
+        return self.class_labels[result]
