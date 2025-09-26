@@ -3,7 +3,8 @@ from cnnClassifier.pipeline.stage_01_data_ingestion import DataIngestionTraining
 from cnnClassifier.config.configuration import ConfigurationManager
 from cnnClassifier.pipeline.stage_02_prepare_base_model import PrepareBaseModelPipeline
 from cnnClassifier.pipeline.stage_03_model_trainer import ModelTrainingPipeline
-
+from cnnClassifier.pipeline.stage_04_model_evaluation  import ModelEvaluationPipeline
+import os
 
 # update pipleine code here for every stage
 STAGE_NAME = "Data Ingestion Stage"
@@ -37,6 +38,18 @@ try:
     logger.info(f">>>>>>>>> stage {STAGE_NAME}  started <<<<<<<<<<<")
     PrepareBaseModel = ModelTrainingPipeline()
     PrepareBaseModel.main()
+    logger.info(f">>>>>>>>>> stage {STAGE_NAME} completed <<<<<<<<\n\nx===============x")
+except Exception as e:
+    logger.exception(e)
+    raise e
+
+STAGE_NAME = "Evaluation"
+
+try:
+    logger.info(f"************************")
+    logger.info(f">>>>>>>>> stage {STAGE_NAME}  started <<<<<<<<<<<")
+    evaluate = ModelEvaluationPipeline()
+    evaluate.main()
     logger.info(f">>>>>>>>>> stage {STAGE_NAME} completed <<<<<<<<\n\nx===============x")
 except Exception as e:
     logger.exception(e)

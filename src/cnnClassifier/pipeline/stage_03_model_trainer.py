@@ -17,6 +17,7 @@ class ModelTrainingPipeline:
         training.train()
 
 
+# for dvc
 
 if __name__== '__main__': # python starts reading from here
     try:

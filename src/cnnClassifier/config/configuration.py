@@ -3,9 +3,17 @@ from cnnClassifier.utils.common import read_yaml, create_directories
 from cnnClassifier.entity.config_entity import (DataIngestionConfig)
 from cnnClassifier.entity.config_entity import (PrepareBaseModelConfig)
 from cnnClassifier.entity.config_entity import (TrainingConfig)
+from cnnClassifier.entity.config_entity import (EvaluationConfig)
+import mlflow   
+from dotenv import load_dotenv
 import os
+from pathlib import Path 
 
-from pathlib import Path    
+
+load_dotenv()  # loads .env file
+
+MLFLOW_TRACKING_URI = os.getenv("MLFLOW_TRACKING_URI")
+
 class ConfigurationManager:
     def __init__(
         self,
@@ -74,3 +82,14 @@ class ConfigurationManager:
             params_image_size = params.IMAGE_SIZE
         )
         return training_config
+    
+    def get_evaluated_config(self) -> EvaluationConfig:
+        eval_config = EvaluationConfig(
+            path_of_model="artifacts/training/model.h5",
+            training_data="artifacts/data_ingestion/Data/train",  # now valid
+            mlflow_url=MLFLOW_TRACKING_URI,
+            all_params=self.params,
+            params_image_size=self.params.IMAGE_SIZE,
+            params_batch_size=self.params.BATCH_SIZE
+        )
+        return eval_config

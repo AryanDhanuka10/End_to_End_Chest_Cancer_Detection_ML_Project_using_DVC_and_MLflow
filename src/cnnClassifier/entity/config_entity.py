@@ -31,3 +31,13 @@ class TrainingConfig:
     params_batch_size : int
     params_is_augmentation : bool
     params_image_size : list
+
+@dataclass()
+class EvaluationConfig:
+    def __init__(self, path_of_model, mlflow_url, all_params, params_image_size, params_batch_size, training_data):
+        self.path_of_model = path_of_model
+        self.mlflow_url = mlflow_url
+        self.all_params = all_params
+        self.params_image_size = params_image_size
+        self.params_batch_size = params_batch_size
+        self.training_data = training_data 
