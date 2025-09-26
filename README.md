@@ -37,17 +37,30 @@ Chest cancer detection from medical images is a crucial application of AI in hea
 ## 📂 Project Structure
 ```
 
-📦 end-to-end-ml_project-chest-cancer-detection-using-mlops-and-dvc
+📦 
+
+end-to-end-ml_project-chest-cancer-detection-using-mlops-and-dvc
+
 │-- .dvc/               # DVC configuration for dataset & model versioning
+
 │-- .github/workflows/   # CI/CD automation with GitHub Actions
+
 │-- config/             # Configuration files for training & inference
+
 │-- research/           # Jupyter notebooks for exploratory data analysis
+
 │-- src/cnnClassifier/  # CNN architecture & ML pipeline scripts
+
 │-- templates/          # HTML templates for the web app interface
+
 │-- app.py              # Flask-based web API
+
 │-- streamlit_app.py    # Streamlit app for user-friendly predictions
+
 │-- FastAPI_app.py      # FastAPI backend for RESTful predictions
+
 │-- requirements.txt    # Dependencies for setting up the project
+
 
 ````
 
