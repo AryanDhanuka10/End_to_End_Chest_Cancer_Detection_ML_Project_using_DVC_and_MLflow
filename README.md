@@ -1,6 +1,4 @@
-Got it 👍 — here’s the complete **Markdown for your README.md** file, ready to paste directly:
 
-```markdown
 # 🚀 End-to-End Chest Cancer Detection using MLOps & DVC
 
 🌟 An AI-powered solution for early chest cancer detection using Deep Learning and MLOps.  
